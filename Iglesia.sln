@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iglesia.Common", "Iglesia.Common\Iglesia.Common.csproj", "{899A74F9-7B84-41C4-8BA6-4FC4B86DEEDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iglesia.Web", "Iglesia.Web\Iglesia.Web.csproj", "{B015CC5E-FA31-4C36-A4BF-C76926C577A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{899A74F9-7B84-41C4-8BA6-4FC4B86DEEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899A74F9-7B84-41C4-8BA6-4FC4B86DEEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899A74F9-7B84-41C4-8BA6-4FC4B86DEEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899A74F9-7B84-41C4-8BA6-4FC4B86DEEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B015CC5E-FA31-4C36-A4BF-C76926C577A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B015CC5E-FA31-4C36-A4BF-C76926C577A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B015CC5E-FA31-4C36-A4BF-C76926C577A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B015CC5E-FA31-4C36-A4BF-C76926C577A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1083C666-04F3-4F03-8E27-851D3D61E620}
+	EndGlobalSection
+EndGlobal

@@ -9,13 +9,26 @@ namespace Iglesia.Web.Data
         {
         }
 
+        public DbSet<Church> Churches { get; set; }
+        public DbSet<District> Districts { get; set; }
         public DbSet<Region> Regions { get; set; }
+
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Region>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<District>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Church>()
                 .HasIndex(t => t.Name)
                 .IsUnique();
         }

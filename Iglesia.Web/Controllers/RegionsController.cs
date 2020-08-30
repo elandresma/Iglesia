@@ -21,7 +21,9 @@ namespace Iglesia.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Regions.ToListAsync());
+            return View(await _context.Regions
+                .Include(d => d.Districts)
+                .ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -32,6 +34,8 @@ namespace Iglesia.Web.Controllers
             }
 
             var region = await _context.Regions
+                .Include(d => d.Districts)
+                .ThenInclude(c => c.Churches)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (region == null)
             {
@@ -96,7 +100,7 @@ namespace Iglesia.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Region region)
+        public async Task<IActionResult> Edit(int id, Region region)
         {
             if (id != region.Id)
             {
@@ -109,6 +113,7 @@ namespace Iglesia.Web.Controllers
                 {
                     _context.Update(region);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateException dbUpdateException)
                 {
@@ -125,8 +130,8 @@ namespace Iglesia.Web.Controllers
                 {
                     ModelState.AddModelError(string.Empty, exception.Message);
                 }
-                return RedirectToAction(nameof(Index));
             }
+
             return View(region);
         }
 
@@ -151,9 +156,66 @@ namespace Iglesia.Web.Controllers
         }
 
 
-        private bool RegionExists(int id)
+        public async Task<IActionResult> AddDistrict(int? id)
         {
-            return _context.Regions.Any(e => e.Id == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Region region = await _context.Regions.FindAsync(id);
+            if (region == null)
+            {
+                return NotFound();
+            }
+
+            District model = new District { IdRegion = region.Id };
+            return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddDistrict(District district)
+        {
+            if (ModelState.IsValid)
+            {
+                Region region= await _context.Regions
+                    .Include(c => c.Districts)
+                    .FirstOrDefaultAsync(c => c.Id == district.IdRegion);
+
+                if (region == null)
+                {
+                    return NotFound();
+                }
+
+                try
+                {
+                    district.Id = 0;
+                    region.Districts.Add(district);
+                    _context.Update(region);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction($"{nameof(Details)}/{region.Id}");
+
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    if (dbUpdateException.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "There are a district with the same name.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, exception.Message);
+                }
+            }
+
+            return View(district);
+        }
+
     }
 }

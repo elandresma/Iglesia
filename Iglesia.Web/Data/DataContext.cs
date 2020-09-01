@@ -1,9 +1,12 @@
 ﻿using Iglesia.Common.Entities;
+using Iglesia.Web.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Iglesia.Web.Data
 {
-    public class DataContext : DbContext
+    public class DataContext :  IdentityDbContext<User>
+
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -12,6 +15,7 @@ namespace Iglesia.Web.Data
         public DbSet<Church> Churches { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<Profession> Professions { get; set; }
 
 
 
@@ -29,6 +33,10 @@ namespace Iglesia.Web.Data
                 .IsUnique();
 
             modelBuilder.Entity<Church>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Profession>()
                 .HasIndex(t => t.Name)
                 .IsUnique();
         }

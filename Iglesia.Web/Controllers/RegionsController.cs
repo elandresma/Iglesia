@@ -1,5 +1,6 @@
 ﻿using Iglesia.Common.Entities;
 using Iglesia.Web.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Iglesia.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RegionsController : Controller
     {
         private readonly DataContext _context;

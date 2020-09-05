@@ -35,8 +35,8 @@ namespace Iglesia.Web.Data.Entities
 
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44339//images/noimage.png"
-            : $"https://onsale.blob.core.windows.net/users/{ImageId}";
+            ? $"https://iglesiaamarinh.azurewebsites.net/images/noimage.png"
+            : $"https://iglesiamarin.blob.core.windows.net/users/{ImageId}";
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }

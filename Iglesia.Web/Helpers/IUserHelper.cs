@@ -1,4 +1,5 @@
-﻿using Iglesia.Web.Data.Entities;
+﻿using Iglesia.Common.Enum;
+using Iglesia.Web.Data.Entities;
 using Iglesia.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -24,6 +25,7 @@ namespace Iglesia.Web.Helpers
 
         Task LogoutAsync();
         Task<SignInResult> ValidatePasswordAsync(User user, string password);
+        Task<User> AddUserAsync(AddUserViewModel model, Guid imageId, UserType userType);
 
     }
 

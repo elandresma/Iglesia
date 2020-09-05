@@ -57,6 +57,9 @@ namespace Iglesia.Web
                 };
             });
 
+            services.AddScoped<IBlobHelper, BlobHelper>();
+           // services.AddScoped<IConverterHelper, ConverterHelper>();
+            services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddTransient<SeedDb>();
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

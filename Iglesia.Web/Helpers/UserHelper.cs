@@ -1,8 +1,10 @@
-﻿using Iglesia.Web.Data;
+﻿using Iglesia.Common.Enum;
+using Iglesia.Web.Data;
 using Iglesia.Web.Data.Entities;
 using Iglesia.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
 namespace Iglesia.Web.Helpers
@@ -74,6 +76,34 @@ namespace Iglesia.Web.Helpers
         public async Task<SignInResult> ValidatePasswordAsync(User user, string password)
         {
             return await _signInManager.CheckPasswordSignInAsync(user, password, false);
+        }
+
+        public async Task<User> AddUserAsync(AddUserViewModel model, Guid imageId, UserType userType)
+        {
+            User user = new User
+            {
+                Address = model.Address,
+                Document = model.Document,
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                ImageId = imageId,
+                PhoneNumber = model.PhoneNumber,
+                Church = await _context.Churches.FindAsync(model.ChurchId),
+                Profession = await _context.Professions.FindAsync(model.ProfessionID),
+                UserName = model.Username,
+                UserType = userType
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            User newUser = await GetUserAsync(model.Username);
+            await AddUserToRoleAsync(newUser, user.UserType.ToString());
+            return newUser;
         }
 
     }

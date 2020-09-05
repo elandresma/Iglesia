@@ -1,6 +1,12 @@
-﻿using Iglesia.Web.Helpers;
+﻿using Iglesia.Common.Entities;
+using Iglesia.Common.Enum;
+using Iglesia.Web.Data;
+using Iglesia.Web.Data.Entities;
+using Iglesia.Web.Helpers;
 using Iglesia.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,11 +14,24 @@ namespace Iglesia.Web.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
+        private readonly ICombosHelper _combosHelper;
+        private readonly IBlobHelper _blobHelper;
 
-        public AccountController(IUserHelper userHelper)
+
+        public AccountController(
+            DataContext context,
+            IUserHelper userHelper,
+            ICombosHelper combosHelper,
+            IBlobHelper blobHelper)
+
         {
+            _context = context;
             _userHelper = userHelper;
+            _combosHelper = combosHelper;
+            _blobHelper = blobHelper;
+
         }
 
         public IActionResult Login()
@@ -52,6 +71,91 @@ namespace Iglesia.Web.Controllers
             await _userHelper.LogoutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult Register()
+        {
+            AddUserViewModel model = new AddUserViewModel
+            {
+                Regions = _combosHelper.GetComboRegions(),
+                Professions = _combosHelper.GetComboProfessions(),
+                Districts = _combosHelper.GetComboDistricts(0),
+                Churches = _combosHelper.GetComboChurches(0),
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(AddUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid imageId = Guid.Empty;
+
+                if (model.ImageFile != null)
+                {
+                    imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "users");
+                }
+
+                User user = await _userHelper.AddUserAsync(model, imageId, UserType.User);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "This email is already used.");
+                    model.Regions = _combosHelper.GetComboRegions();
+                    model.Districts = _combosHelper.GetComboDistricts(model.RegionId);
+                    model.Churches = _combosHelper.GetComboChurches(model.DistrictId);
+                    return View(model);
+                }
+
+                LoginViewModel loginViewModel = new LoginViewModel
+                {
+                    Password = model.Password,
+                    RememberMe = false,
+                    Username = model.Username
+                };
+
+                var result2 = await _userHelper.LoginAsync(loginViewModel);
+
+                if (result2.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            model.Regions = _combosHelper.GetComboRegions();
+            model.Districts = _combosHelper.GetComboDistricts(model.RegionId);
+            model.Churches = _combosHelper.GetComboChurches(model.DistrictId);
+            return View(model);
+        }
+
+
+        public JsonResult GetDistricts(int regionId)
+        {
+            Region region = _context.Regions
+                .Include(c => c.Districts)
+                .FirstOrDefault(c => c.Id == regionId);
+            if (region == null)
+            {
+                return null;
+            }
+
+            return Json(region.Districts.OrderBy(d => d.Name));
+        }
+
+        public JsonResult GetChurches(int districtId)
+        {
+            District district = _context.Districts
+                .Include(d => d.Churches)
+                .FirstOrDefault(d => d.Id == districtId);
+            if (district == null)
+            {
+                return null;
+            }
+
+            return Json(district.Churches.OrderBy(c => c.Name));
+        }
+
     }
 
 }

@@ -34,8 +34,9 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <li><a asp-area="" asp-controller="Professions" asp-action="Index">Professions</a></li>
-                        <li><a asp-area="" asp-controller="Regions" asp-action="Index">Regions</a></li>
+                    <li><a asp-area="" asp-controller="Professions" asp-action="Index">Professions</a></li>
+                    <li><a asp-area="" asp-controller="Regions" asp-action="Index">Regions</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Members">Members</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

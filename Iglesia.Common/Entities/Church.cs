@@ -15,6 +15,11 @@ namespace Iglesia.Common.Entities
         [JsonIgnore]
         [NotMapped]
         public int IdDistrict { get; set; }
+
+
+        [JsonIgnore]
+        public District District { get; set; }
+
     }
 
 }

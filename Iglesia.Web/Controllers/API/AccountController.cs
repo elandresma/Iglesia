@@ -1,9 +1,11 @@
 ﻿using Iglesia.Common.Requests;
+using Iglesia.Web.Data;
 using Iglesia.Web.Data.Entities;
 using Iglesia.Web.Helpers;
 using Iglesia.Web.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -23,11 +25,13 @@ namespace Iglesia.Web.Controllers.API
     {
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
+        private readonly DataContext _context;
 
-        public AccountController(IUserHelper userHelper, IConfiguration configuration)
+        public AccountController(IUserHelper userHelper, IConfiguration configuration,DataContext context)
         {
             _userHelper = userHelper;
             _configuration = configuration;
+            _context = context;
         }
 
         [HttpPost]
@@ -89,6 +93,40 @@ namespace Iglesia.Web.Controllers.API
             }
 
             return Ok(user);
+        }
+
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPut]
+        [Route("PutUser")]
+        public async Task<IActionResult> PutUser([FromBody] UserRequest request)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            User user = await _userHelper.GetUserAsync(request.Username);
+            if (user == null)
+            {
+                return NotFound("Error001");
+            }
+
+            user.Address = request.Address;
+            user.Church = await _context.Churches.FindAsync(request.ChurchId);
+            user.Document = request.Document;
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.Profession = await _context.Professions.FindAsync(request.ProfessionId);
+
+            IdentityResult respose = await _userHelper.UpdateUserAsync(user);
+
+            if (!respose.Succeeded) 
+            { 
+                return BadRequest(respose.Errors.FirstOrDefault().Description); 
+            }
+
+            return Ok("Usuario Actualizado con exito");
         }
 
     }

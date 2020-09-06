@@ -24,17 +24,24 @@ namespace Iglesia.Web.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Region>()
-                .HasIndex(t => t.Name)
-                .IsUnique();
+            modelBuilder.Entity<Region>(re =>
+            {
+                re.HasIndex("Name").IsUnique();
+                re.HasMany(r => r.Districts).WithOne(d => d.Region).OnDelete(DeleteBehavior.Cascade);
+            });
 
-            modelBuilder.Entity<District>()
-                .HasIndex(t => t.Name)
-                .IsUnique();
+            modelBuilder.Entity<District>(di =>
+            {
+                di.HasIndex("Name", "RegionId").IsUnique();
+                di.HasOne(d => d.Region).WithMany(c => c.Districts).OnDelete(DeleteBehavior.Cascade);
+            });
+          
+            modelBuilder.Entity<Church>(ch =>
+            {
+                ch.HasIndex("Name", "DistrictId").IsUnique();
+                ch.HasOne(c => c.District).WithMany(d => d.Churches).OnDelete(DeleteBehavior.Cascade);
+            });
 
-            modelBuilder.Entity<Church>()
-                .HasIndex(t => t.Name)
-                .IsUnique();
 
             modelBuilder.Entity<Profession>()
                 .HasIndex(t => t.Name)

@@ -22,6 +22,11 @@ namespace Iglesia.Common.Entities
         [JsonIgnore]
         [NotMapped]
         public int IdRegion { get; set; }
+
+
+        [JsonIgnore]
+        public Region Region { get; set; }
+
     }
 
 }

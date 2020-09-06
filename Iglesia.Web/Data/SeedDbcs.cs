@@ -24,12 +24,32 @@ namespace Iglesia.Web.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckRegionsAsync();
+            await CheckProfessionsAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Andres", "Marin", "andres521marin@gmail.com", "301 734 8518", "Calle Luna Calle Sol", UserType.Admin);
 
         }
 
-        private async Task CheckRegionsAsync()
+        private async Task CheckProfessionsAsync()
+        {
+            if (!_context.Professions.Any())
+            {
+                _context.Professions.Add(new Profession
+                {
+                    Name = "Lawer"
+                });
+                _context.Professions.Add(new Profession
+                {
+                    Name = "Engineer"
+                });
+                _context.Professions.Add(new Profession
+                {
+                    Name = "Priest"
+                });
+            }
+            await _context.SaveChangesAsync();
+        }
+            private async Task CheckRegionsAsync()
         {
             if (!_context.Regions.Any())
             {
@@ -133,6 +153,9 @@ namespace Iglesia.Web.Data
 
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+                string token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
+
             }
 
             return user;

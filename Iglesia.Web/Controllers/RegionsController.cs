@@ -1,5 +1,5 @@
-﻿using Iglesia.Common.Entities;
-using Iglesia.Web.Data;
+﻿using Iglesia.Web.Data;
+using Iglesia.Web.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -433,7 +433,7 @@ namespace Iglesia.Web.Controllers
                 return NotFound();
             }
 
-            District district= await _context.Districts.FirstOrDefaultAsync(d => d.Churches.FirstOrDefault(c => c.Id == church.Id) != null);
+            District district = await _context.Districts.FirstOrDefaultAsync(d => d.Churches.FirstOrDefault(c => c.Id == church.Id) != null);
             _context.Churches.Remove(church);
             await _context.SaveChangesAsync();
             return RedirectToAction($"{nameof(DetailsDistrict)}/{district.Id}");

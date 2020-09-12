@@ -16,6 +16,8 @@ namespace Iglesia.Web.Data
         public DbSet<District> Districts { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Profession> Professions { get; set; }
+        public DbSet<Assistance> Assistances { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
 
 
 

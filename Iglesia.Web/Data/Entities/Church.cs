@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Iglesia.Common.Entities;
+using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Iglesia.Common.Entities
+namespace Iglesia.Web.Data.Entities
 {
-    public class District
+    public class Church
     {
         public int Id { get; set; }
 
@@ -14,18 +14,16 @@ namespace Iglesia.Common.Entities
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Church> Churches { get; set; }
-
-        [DisplayName("Churches Number")]
-        public int ChurchesNumber => Churches == null ? 0 : Churches.Count;
-
         [JsonIgnore]
         [NotMapped]
-        public int IdRegion { get; set; }
+        public int IdDistrict { get; set; }
 
 
         [JsonIgnore]
-        public Region Region { get; set; }
+        public District District { get; set; }
+
+        public ICollection<User> User { get; set; }
+
 
     }
 

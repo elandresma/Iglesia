@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Iglesia.Common.Entities
+namespace Iglesia.Web.Data.Entities
 {
     public class Region
     {

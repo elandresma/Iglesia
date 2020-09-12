@@ -1,5 +1,5 @@
-﻿using Iglesia.Common.Entities;
-using Iglesia.Web.Data;
+﻿using Iglesia.Web.Data;
+using Iglesia.Web.Data.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

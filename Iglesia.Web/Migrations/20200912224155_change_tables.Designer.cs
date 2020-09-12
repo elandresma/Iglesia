@@ -4,14 +4,16 @@ using Iglesia.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Iglesia.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200912224155_change_tables")]
+    partial class change_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace Iglesia.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Assistances");
+                    b.ToTable("Assistance");
                 });
 
             modelBuilder.Entity("Iglesia.Web.Data.Entities.Church", b =>
@@ -118,7 +120,7 @@ namespace Iglesia.Web.Migrations
 
                     b.HasIndex("ChurchId");
 
-                    b.ToTable("Meetings");
+                    b.ToTable("Meeting");
                 });
 
             modelBuilder.Entity("Iglesia.Web.Data.Entities.Region", b =>

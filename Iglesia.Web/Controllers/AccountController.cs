@@ -1,5 +1,4 @@
-﻿using Iglesia.Common.Entities;
-using Iglesia.Common.Enum;
+﻿using Iglesia.Common.Enum;
 using Iglesia.Common.Responses;
 using Iglesia.Web.Data;
 using Iglesia.Web.Data.Entities;
@@ -43,7 +42,7 @@ namespace Iglesia.Web.Controllers
         public async Task<IActionResult> Members()
         {
             return View(await _context.Users
-                .Include(u =>u.Profession)
+                .Include(u => u.Profession)
                 .Include(u => u.Church)
                 .ToListAsync());
         }

@@ -17,8 +17,6 @@ namespace Iglesia.Web.Controllers
         {
             _context = context;
         }
-
-        // GET: Professions
         public async Task<IActionResult> Index()
         {
             return View(await _context.Professions.ToListAsync());

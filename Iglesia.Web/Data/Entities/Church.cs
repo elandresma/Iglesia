@@ -22,7 +22,9 @@ namespace Iglesia.Web.Data.Entities
         [JsonIgnore]
         public District District { get; set; }
 
-        public ICollection<User> User { get; set; }
+        public ICollection<User> Users { get; set; }
+
+        public ICollection<Meeting> Meetings { get; set; }
 
 
     }

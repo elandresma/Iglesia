@@ -241,6 +241,7 @@ namespace Iglesia.Web.Controllers
                 user.PhoneNumber = model.PhoneNumber;
                 user.ImageId = imageId;
                 user.Church = await _context.Churches.FindAsync(model.ChurchId);
+                user.Profession = await _context.Professions.FindAsync(model.ProfessionID);
                 user.Document = model.Document;
 
                 await _userHelper.UpdateUserAsync(user);

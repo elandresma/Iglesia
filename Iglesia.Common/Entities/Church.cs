@@ -20,6 +20,7 @@ namespace Iglesia.Common.Entities
         [JsonIgnore]
         public District District { get; set; }
 
+
     }
 
 }

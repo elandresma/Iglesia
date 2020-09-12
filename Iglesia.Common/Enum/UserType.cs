@@ -7,6 +7,7 @@ namespace Iglesia.Common.Enum
     public enum UserType
     {
         Admin,
+        Teacher,
         User
     }
 }

@@ -50,5 +50,8 @@ namespace Iglesia.Web.Data.Entities
 
         [Display(Name = "User")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
+
+        public ICollection<Assistance> Assistances { get; set; }
+
     }
     }

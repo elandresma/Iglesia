@@ -65,7 +65,7 @@
                     data: { districtId: $("#DistrictId").val() },
                     success: function (churches) {
                         $.each(churches, function (i, church) {
-                            $("#CityId").append('<option value="'
+                            $("#ChurchId").append('<option value="'
                                 + church.id + '">'
                                 + church.name + '</option>');
                         });

@@ -39,9 +39,9 @@ namespace Iglesia.Web.Controllers
         }
 
         
-        public async Task<IActionResult> Members(bool IsTeacher)
+        public async Task<IActionResult> Members()
         {
-            if (IsTeacher)
+            if (User.IsInRole(UserType.Teacher.ToString()))
             {
                 User user = await _userHelper.GetUserAsync(User.Identity.Name);
                 return View(await _context.Users
@@ -104,7 +104,7 @@ namespace Iglesia.Web.Controllers
                 Regions = _combosHelper.GetComboRegions(),
                 Professions = _combosHelper.GetComboProfessions(),
                 Districts = _combosHelper.GetComboDistricts(0),
-                Churches = _combosHelper.GetComboChurches(0),
+                Churches = _combosHelper.GetComboChurches(0)
             };
 
             return View(model);
@@ -191,23 +191,28 @@ namespace Iglesia.Web.Controllers
         public async Task<IActionResult> ChangeUser()
         {
             User user = await _userHelper.GetUserAsync(User.Identity.Name);
+            District district = new District();
+            Region region = new Region(); 
+
             if (user == null)
             {
                 return NotFound();
             }
 
-            District district = await _context.Districts.FirstOrDefaultAsync(d => d.Churches.FirstOrDefault(c => c.Id == user.Church.Id) != null);
-            if (district == null)
+            if (!User.IsInRole(UserType.Admin.ToString()))
             {
-                district = await _context.Districts.FirstOrDefaultAsync();
-            }
+                 district = await _context.Districts.FirstOrDefaultAsync(d => d.Churches.FirstOrDefault(c => c.Id == user.Church.Id) != null);
+                if (district == null)
+                {
+                    district = await _context.Districts.FirstOrDefaultAsync();
+                }
 
-            Region region = await _context.Regions.FirstOrDefaultAsync(c => c.Districts.FirstOrDefault(d => d.Id == district.Id) != null);
-            if (region == null)
-            {
-                region = await _context.Regions.FirstOrDefaultAsync();
+                 region = await _context.Regions.FirstOrDefaultAsync(c => c.Districts.FirstOrDefault(d => d.Id == district.Id) != null);
+                if (region == null)
+                {
+                    region = await _context.Regions.FirstOrDefaultAsync();
+                }
             }
-
 
             EditUserViewModel model = new EditUserViewModel
             {
@@ -216,19 +221,28 @@ namespace Iglesia.Web.Controllers
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 ImageId = user.ImageId,
-                Churches = _combosHelper.GetComboChurches(district.Id),
-                ChurchId = user.Church.Id,
                 Regions = _combosHelper.GetComboRegions(),
-                ProfessionID = user.Profession.Id,
                 Professions = _combosHelper.GetComboProfessions(),
-                RegionId = region.Id,
-                DistrictId = district.Id,
-                Districts = _combosHelper.GetComboDistricts(region.Id),
                 Id = user.Id,
                 Document = user.Document
             };
 
-            return View(model);
+            if (User.IsInRole(UserType.Admin.ToString()))
+            {
+                model.Districts = _combosHelper.GetComboDistricts(0);
+                model.Churches = _combosHelper.GetComboChurches(0);
+            }
+            else 
+            {
+                model.Churches = _combosHelper.GetComboChurches(district.Id);
+                model.ChurchId = user.Church.Id;
+                model.RegionId = region.Id;
+                model.DistrictId = district.Id;
+                model.Districts = _combosHelper.GetComboDistricts(region.Id);
+                model.ProfessionID = user.Profession.Id;
+            }
+
+                return View(model);
         }
 
         [HttpPost]

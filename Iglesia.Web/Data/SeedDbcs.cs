@@ -132,9 +132,32 @@ namespace Iglesia.Web.Data
                 Church church = await _context.Churches.FirstOrDefaultAsync(c => c.Name == photo.Church);
                 await CheckUserAsync($"1002158{i}", photo.Firstname, photo.Lastname, $"user{i}@yopmail.com", $"350 634 274{i}", $"Calle Luna Calle{i} Sol", UserType.User, photo.Image, church, profession);
             }
+
+            List<Photo> photosTeacher = LoadTeacher();
+            int j = 0;
+            foreach (Photo photo in photosTeacher)
+            {
+                j++;
+                Profession profession = await _context.Professions.FirstOrDefaultAsync(c => c.Name == photo.Profession);
+                Church church = await _context.Churches.FirstOrDefaultAsync(c => c.Name == photo.Church);
+                await CheckUserAsync($"1002158{j}", photo.Firstname, photo.Lastname, $"Teacher{j}@yopmail.com", $"350 634 274{j}", $"Calle Profe Calle{j} Sol", UserType.Teacher, photo.Image, church, profession);
+            }
         }
 
-
+        private List<Photo> LoadTeacher()
+        {
+            return new List<Photo>
+            {
+                new Photo { Firstname = "Eduard", Lastname = "Vergara", Image = "Eduard.jpg", Profession= "Lawer", Church="Church 1"},
+                new Photo { Firstname = "Hernesto", Lastname = "Lopez", Image = "Hernesto.jpg", Profession= "Priest", Church="Church 2"},
+                new Photo { Firstname = "Mariana", Lastname = "Cardona", Image = "Mariana.jpg", Profession= "Doctor", Church="Church 3" },
+                new Photo { Firstname = "Mark", Lastname = "Echavarria", Image = "Mark.jpg", Profession = "Priest", Church = "Church 4" },
+                new Photo { Firstname = "Nataly", Lastname = "Sanchez", Image = "Nataly.jpg", Profession= "Lawer", Church="Church 5"},
+                new Photo { Firstname = "Sofia", Lastname = "Medez", Image = "Sofia.jpg" , Profession= "Doctor", Church="Church 6"},
+                new Photo { Firstname = "Sonia", Lastname = "Smith", Image = "Sonia.jpg" , Profession= "Lawer", Church="Church 7"},
+                new Photo { Firstname = "Valentina", Lastname = "Rogers", Image = "Valentina.jpg" , Profession= "Doctor", Church="Church 8"},
+            };
+        }  
 
         private List<Photo> LoadPhotos()
         {

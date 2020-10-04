@@ -41,6 +41,7 @@
                     else if (User.Identity.IsAuthenticated && User.IsInRole("Teacher"))
                     {
                         <li><a asp-area="" asp-controller="Account" asp-action="Members">Members</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Meetings">Meetings</a></li>
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

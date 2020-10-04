@@ -20,7 +20,7 @@ namespace Iglesia.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(UsersPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,6 +29,8 @@ namespace Iglesia.Prism
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<UsersPage, UsersPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
         }
     }
 }

@@ -41,6 +41,7 @@ namespace Iglesia.Web.Data.Entities
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }
 
+
         public Profession Profession { get; set; }
 
         public Church Church { get; set; }

@@ -461,7 +461,37 @@ namespace Iglesia.Web.Controllers
             model.Churches = _combosHelper.GetComboChurches(model.DistrictId);
             return View(model);
         }
-     
+
+        public async Task<IActionResult> Meetings()
+        {
+
+                User user = await _userHelper.GetUserAsync(User.Identity.Name);
+                return View(await _context.Meetings
+                    .Include(m => m.Assistances)
+                    .Include(m => m.Church)
+                    .Where(m => m.Church.Id == user.Church.Id)
+                    .ToListAsync());
+
+        }
+        public async Task<IActionResult> DetailsMeeting(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var assistances = await _context.Assistances
+              .Include(a => a.User)
+              .Include(a => a.Meeting)
+              .Where(a => a.Meeting.Id == id)
+              .ToListAsync();
+
+            if (assistances == null)
+            {
+                return NotFound();
+            }
+            return View(assistances);
+           
+        }
     }
 
 }

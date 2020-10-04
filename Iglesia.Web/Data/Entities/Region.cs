@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace Iglesia.Web.Data.Entities
@@ -16,8 +17,11 @@ namespace Iglesia.Web.Data.Entities
 
         public ICollection<District> Districts { get; set; }
 
-        [DisplayName("Districts Number")]
+        [Display(Name = "# Districts")]
         public int DistrictsNumber => Districts == null ? 0 : Districts.Count;
+
+        [Display(Name = "# Churches")]
+        public int ChurchesNumber => Districts == null ? 0 : Districts.Sum(d => d.ChurchesNumber);
 
     }
 }

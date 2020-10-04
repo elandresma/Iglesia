@@ -20,11 +20,18 @@ namespace Iglesia.Web.Data.Entities
 
 
         [JsonIgnore]
+        [Required]
         public District District { get; set; }
 
+        [JsonIgnore]
         public ICollection<User> Users { get; set; }
 
+        [JsonIgnore]
         public ICollection<Meeting> Meetings { get; set; }
+
+        [Display(Name = "# Users")]
+        public int UsersNumber => Users == null ? 0 : Users.Count;
+
 
 
     }

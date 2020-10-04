@@ -10,9 +10,11 @@ namespace Iglesia.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [MaxLength(50, ErrorMessage = "The field {0} must contain less than {1} characteres.")]
+        [Display(Name = "District")]
+        [MaxLength(50)]
         [Required]
         public string Name { get; set; }
+
 
         public ICollection<Church> Churches { get; set; }
 
@@ -25,6 +27,7 @@ namespace Iglesia.Web.Data.Entities
 
 
         [JsonIgnore]
+        [Required]
         public Region Region { get; set; }
 
     }

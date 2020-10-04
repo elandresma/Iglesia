@@ -72,6 +72,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -113,6 +114,10 @@
     <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Iglesia.Common\Iglesia.Common.csproj">
+      <Project>{899a74f9-7b84-41c4-8ba6-4fc4b86deede}</Project>
+      <Name>Iglesia.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Iglesia.Prism\Iglesia.Prism.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>Iglesia.Prism</Name>

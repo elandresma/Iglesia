@@ -2,8 +2,10 @@
 using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
+using Iglesia.Prism.Helpers;
 using Prism.Navigation;
 using System;
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -21,7 +23,7 @@ namespace Iglesia.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = "Users";
+            Title = Languages.Users;
             GetUsersByChurch();
         }
 
@@ -35,7 +37,7 @@ namespace Iglesia.Prism.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection.", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
@@ -51,10 +53,7 @@ namespace Iglesia.Prism.ViewModels
 
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert(
-                    "Error",
-                    response.Message,
-                    "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 

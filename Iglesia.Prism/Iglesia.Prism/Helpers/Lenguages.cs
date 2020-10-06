@@ -33,6 +33,23 @@ namespace Iglesia.Prism.Helpers
         public static string Phone => Resource.Phone;
         public static string Users => Resource.Users;
 
+        public static string EmailError => Resource.EmailError;
+
+        public static string EmailPlaceHolder => Resource.EmailPlaceHolder;
+
+        public static string Password => Resource.Password;
+
+        public static string PasswordError => Resource.PasswordError;
+
+        public static string PasswordPlaceHolder => Resource.PasswordPlaceHolder;
+
+        public static string ForgotPassword => Resource.ForgotPassword;
+
+        public static string LoginError => Resource.LoginError;
+
+        public static string Logout => Resource.Logout;
+
+
     }
 
 

@@ -3,11 +3,13 @@ using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
 using Iglesia.Prism.Helpers;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Essentials;
 
@@ -18,6 +20,12 @@ namespace Iglesia.Prism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private ObservableCollection<UserResponse> _user;
+        private bool _isRunning;
+        private string _search;
+        private List<UserResponse> _myusers;
+        private DelegateCommand _searchCommand;
+        public DelegateCommand SearchCommand => _searchCommand ?? (_searchCommand = new DelegateCommand(ShowUsers));
+
 
         public UsersPageViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
@@ -25,6 +33,37 @@ namespace Iglesia.Prism.ViewModels
             _apiService = apiService;
             Title = Languages.Users;
             GetUsersByChurch();
+        }
+       
+
+        public string Search
+        {
+            get => _search;
+            set
+            {
+                SetProperty(ref _search, value);
+                ShowUsers();
+            }
+        }
+ 
+
+        private void ShowUsers()
+        {
+            if (string.IsNullOrEmpty(Search))
+            {
+                Users = new ObservableCollection<UserResponse>(_myusers);
+            }
+            else
+            {
+                Users = new ObservableCollection<UserResponse>(_myusers
+                    .Where(p => p.FullName.ToLower().Contains(Search.ToLower())));
+            }
+        }
+
+        public bool IsRunning
+        {
+            get => _isRunning;
+            set => SetProperty(ref _isRunning, value);
         }
 
         public ObservableCollection<UserResponse> Users
@@ -40,7 +79,7 @@ namespace Iglesia.Prism.ViewModels
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
-
+            IsRunning = true;
             string url = App.Current.Resources["UrlAPI"].ToString();
             EmailRequest teacherEmail = new EmailRequest
             {
@@ -50,15 +89,16 @@ namespace Iglesia.Prism.ViewModels
                 url,
                 "/api",
                 "/Churches/GetUsersByChurch", teacherEmail);
-
+            IsRunning = false;
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 
-            List<UserResponse> myUsers = (List<UserResponse>)response.Result;
-            Users = new ObservableCollection<UserResponse>(myUsers);
+           
+            _myusers = (List<UserResponse>)response.Result;
+            ShowUsers();
         }
     }
 

@@ -6,6 +6,7 @@ using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
 using Iglesia.Common.Services;
+using Syncfusion.Licensing;
 
 namespace Iglesia.Prism
 {
@@ -18,10 +19,12 @@ namespace Iglesia.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MzI4NzM0QDMxMzgyZTMyMmUzMFVQbHlyS0UreFM4cjdhdW9sUXFLU1B6T0Yvb0Zpd3dqWXVlb3FhOU5WTE09");
             InitializeComponent();
 
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(UsersPage)}");
         }
+
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {

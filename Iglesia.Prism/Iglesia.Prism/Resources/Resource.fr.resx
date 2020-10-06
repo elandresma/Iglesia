@@ -147,4 +147,32 @@
   <data name="Users" xml:space="preserve">
     <value>Utilisateurs</value>
   </data>
+	<data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Entrer votre Email...</value>
+  </data>
+	<data name="EmailError" xml:space="preserve">
+    <value>Vous devez entrer un email valide.</value>
+  </data>
+	<data name="Password" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+	<data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Tapez votre mot de passe...</value>
+  </data>
+	<data name="PasswordError" xml:space="preserve">
+    <value>Vous devez entrer le mot de passe.</value>
+  </data>
+	<data name="ForgotPassword" xml:space="preserve">
+    <value>Mot de passe oublié?</value>
+  </data>
+	<data name="Register" xml:space="preserve">
+    <value>Enregistrer un nouvel utilisateur</value>
+  </data>
+	<data name="LoginError" xml:space="preserve">
+    <value>Email ou mot de passe incorrect.</value>
+  </data>
+	<data name="Logout" xml:space="preserve">
+    <value>Fermer la session.</value>
+  </data>
+
 </root>

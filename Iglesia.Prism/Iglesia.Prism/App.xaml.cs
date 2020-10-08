@@ -22,7 +22,7 @@ namespace Iglesia.Prism
             SyncfusionLicenseProvider.RegisterLicense("MzI4NzM0QDMxMzgyZTMyMmUzMFVQbHlyS0UreFM4cjdhdW9sUXFLU1B6T0Yvb0Zpd3dqWXVlb3FhOU5WTE09");
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(UsersPage)}");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(LoginPage)}");
         }
 
 

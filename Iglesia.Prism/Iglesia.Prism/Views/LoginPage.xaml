@@ -6,7 +6,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
          	 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
+           	 xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="Iglesia.Prism.Views.LoginPage"
              BackgroundColor="{StaticResource ColorBackground}"
@@ -18,10 +18,6 @@
                      Padding="5">
             <ScrollView>
                 <StackLayout>
-                    <Image HeightRequest="150"
-                           Margin="20"
-                           Source="onsale"/>
-
                     <StackLayout VerticalOptions="CenterAndExpand">
                         <inputLayout:SfTextInputLayout Hint="{i18n:Translate Email}" 
                                                        ContainerType="Outlined">
@@ -54,6 +50,8 @@
             <StackLayout VerticalOptions="EndAndExpand">
                 <Button Command="{Binding LoginCommand}" 
                         IsEnabled="{Binding IsEnabled}"
+                        Style="{StaticResource SecondaryButton}"
+                        TextColor="#000"
                         Text="{i18n:Translate Login}"/>
                 <Button Command="{Binding RegisterCommand}" 
                         IsEnabled="{Binding IsEnabled}"
@@ -75,3 +73,5 @@
     </AbsoluteLayout>
 
 </ContentPage>
+
+

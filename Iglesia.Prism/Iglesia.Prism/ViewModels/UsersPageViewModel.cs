@@ -1,8 +1,10 @@
 ﻿using DryIoc;
+using Iglesia.Common.Helpers;
 using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
 using Iglesia.Prism.Helpers;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -21,6 +23,7 @@ namespace Iglesia.Prism.ViewModels
         private readonly IApiService _apiService;
         private ObservableCollection<UserResponse> _user;
         private bool _isRunning;
+        private UserResponse _currentUser;
         private string _search;
         private List<UserResponse> _myusers;
         private DelegateCommand _searchCommand;
@@ -32,6 +35,7 @@ namespace Iglesia.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
             Title = Languages.Users;
+            LoadUser();
             GetUsersByChurch();
         }
        
@@ -45,7 +49,20 @@ namespace Iglesia.Prism.ViewModels
                 ShowUsers();
             }
         }
- 
+        public UserResponse User
+        {
+            get => _currentUser;
+            set => SetProperty(ref _currentUser, value);
+        }
+
+        private void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+                User = token.User;
+            }
+        }
 
         private void ShowUsers()
         {
@@ -83,7 +100,7 @@ namespace Iglesia.Prism.ViewModels
             string url = App.Current.Resources["UrlAPI"].ToString();
             EmailRequest teacherEmail = new EmailRequest
             {
-                Email = "Teacher2@yopmail.com"
+                Email = User.Email
             };
             Response response = await _apiService.GetUsersAsync<UserResponse>(
                 url,

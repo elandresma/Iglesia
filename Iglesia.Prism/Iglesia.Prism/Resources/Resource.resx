@@ -147,7 +147,7 @@
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
- <data name="EmailPlaceHolder" xml:space="preserve">
+  <data name="EmailPlaceHolder" xml:space="preserve">
     <value>Enter your email...</value>
   </data>
   <data name="EmailError" xml:space="preserve">
@@ -173,5 +173,8 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
   </data>
 </root>

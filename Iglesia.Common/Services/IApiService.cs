@@ -11,7 +11,7 @@ namespace Iglesia.Common.Services
     {
         Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller);
         Task<Response> GetUsersAsync<T>(string urlBase, string servicePrefix, string controller,EmailRequest email);
-        
+        Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, TokenRequest request);
 
     }
 }

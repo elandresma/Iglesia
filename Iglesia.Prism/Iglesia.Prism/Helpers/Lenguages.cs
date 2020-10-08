@@ -32,7 +32,7 @@ namespace Iglesia.Prism.Helpers
         public static string Email => Resource.Email;
         public static string Phone => Resource.Phone;
         public static string Users => Resource.Users;
-
+        public static string Login => Resource.Login;
         public static string EmailError => Resource.EmailError;
 
         public static string EmailPlaceHolder => Resource.EmailPlaceHolder;

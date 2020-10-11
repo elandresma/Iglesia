@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace Iglesia.Web.Data.Entities
 {
@@ -6,10 +7,10 @@ namespace Iglesia.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [Required]
+        [JsonIgnore]
         public User User { get; set; }
 
-        [Required]
+
         public Meeting Meeting { get; set; }
 
         [Display(Name = "Is Present")]

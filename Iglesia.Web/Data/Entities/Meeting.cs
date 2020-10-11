@@ -1,4 +1,5 @@
 ﻿using Iglesia.Common.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ namespace Iglesia.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [Required]
+
         public Church Church { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
@@ -19,6 +20,7 @@ namespace Iglesia.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
         public DateTime DateLocal => Date.ToLocalTime();
 
+        [JsonIgnore]
         public ICollection<Assistance> Assistances { get; set; }
 
         [Display(Name = "# Assistances")]

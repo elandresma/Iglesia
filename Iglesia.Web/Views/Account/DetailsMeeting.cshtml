@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Iglesia.Web.Data.Entities.Assistance>
+
+@{
+    ViewData["Title"] = "Assistances";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Assistances to meeting @Html.DisplayFor(model => model.First().Meeting.DateLocal)</h3> 
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.User)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsPresent)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.FullName)
+                                </td>
+                                <td>
+                                    @if (item.IsPresent == true)
+                                    {
+                                        <p>Presente</p>
+                                    }
+                                    else
+                                    {
+                                        <p>No presente</p>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                        <a asp-action="Meetings" asp-route-id="@Model.First().Meeting.Id" class="btn btn-success">Back to List</a>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

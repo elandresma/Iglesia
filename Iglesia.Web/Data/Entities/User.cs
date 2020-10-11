@@ -1,6 +1,7 @@
 ﻿using Iglesia.Common.Entities;
 using Iglesia.Common.Enum;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -52,6 +53,7 @@ namespace Iglesia.Web.Data.Entities
         [Display(Name = "User")]
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
+  
         public ICollection<Assistance> Assistances { get; set; }
 
     }

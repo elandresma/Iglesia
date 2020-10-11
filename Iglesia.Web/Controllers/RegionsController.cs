@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Vereyon.Web;
 
 namespace Iglesia.Web.Controllers
 {
@@ -13,10 +14,13 @@ namespace Iglesia.Web.Controllers
     public class RegionsController : Controller
     {
         private readonly DataContext _context;
+        private readonly IFlashMessage _flashMessage;
 
-        public RegionsController(DataContext context)
+        public RegionsController(DataContext context, IFlashMessage flashMessage)
         {
             _context = context;
+            _flashMessage = flashMessage;
+
         }
 
         public async Task<IActionResult> Index()
@@ -49,7 +53,7 @@ namespace Iglesia.Web.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Region region)
@@ -152,8 +156,18 @@ namespace Iglesia.Web.Controllers
                 return NotFound();
             }
 
-            _context.Regions.Remove(region);
-            await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Regions.Remove(region);
+                    await _context.SaveChangesAsync();
+                    _flashMessage.Info("The Region was deleted.");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    _flashMessage.Danger("The Region can't be deleted because it has related records.");
+                }
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -171,7 +185,7 @@ namespace Iglesia.Web.Controllers
                 return NotFound();
             }
 
-            District model = new District { IdRegion = region.Id };
+            District model = new District { IdRegion = region.Id};
             return View(model);
         }
 
@@ -179,6 +193,7 @@ namespace Iglesia.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddDistrict(District district)
         {
+            var errors = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
             if (ModelState.IsValid)
             {
                 Region region = await _context.Regions

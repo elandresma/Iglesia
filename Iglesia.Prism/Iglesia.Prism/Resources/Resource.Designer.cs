@@ -79,6 +79,15 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assistances.
+        /// </summary>
+        internal static string Assistances {
+            get {
+                return ResourceManager.GetString("Assistances", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Church.
         /// </summary>
         internal static string Church {
@@ -178,6 +187,24 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Meetings.
+        /// </summary>
+        internal static string Meetings {
+            get {
+                return ResourceManager.GetString("Meetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify user.
+        /// </summary>
+        internal static string ModifyUser {
+            get {
+                return ResourceManager.GetString("ModifyUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Name {
@@ -228,6 +255,15 @@ namespace Iglesia.Prism.Resources {
         internal static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show users of my church.
+        /// </summary>
+        internal static string ShowUsersByChurch {
+            get {
+                return ResourceManager.GetString("ShowUsersByChurch", resourceCulture);
             }
         }
         

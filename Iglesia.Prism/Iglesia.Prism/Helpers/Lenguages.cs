@@ -1,10 +1,7 @@
 ﻿using Iglesia.Common.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using Xamarin.Forms;
 using Iglesia.Prism.Resources;
+using System.Globalization;
+using Xamarin.Forms;
 
 namespace Iglesia.Prism.Helpers
 {
@@ -48,6 +45,16 @@ namespace Iglesia.Prism.Helpers
         public static string LoginError => Resource.LoginError;
 
         public static string Logout => Resource.Logout;
+
+        public static string ShowUsersByChurch => Resource.ShowUsersByChurch;
+
+        public static string ModifyUser => Resource.ModifyUser;
+
+        public static string Assistances => Resource.Assistances;
+
+
+        public static string Meetings => Resource.Meetings;
+
 
 
     }

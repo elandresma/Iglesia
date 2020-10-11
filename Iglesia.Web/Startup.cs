@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Vereyon.Web;
 
 namespace Iglesia.Web
 {
@@ -74,6 +75,7 @@ namespace Iglesia.Web
             services.AddTransient<SeedDb>();
             services.AddScoped<IUserHelper, UserHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddFlashMessage();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

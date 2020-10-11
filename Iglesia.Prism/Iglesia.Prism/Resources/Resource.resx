@@ -177,4 +177,16 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modify user</value>
+  </data>
+  <data name="ShowUsersByChurch" xml:space="preserve">
+    <value>Show users of my church</value>
+  </data>
+  <data name="Assistances" xml:space="preserve">
+    <value>Assistances</value>
+  </data>
+  <data name="Meetings" xml:space="preserve">
+    <value>Meetings</value>
+  </data>
 </root>

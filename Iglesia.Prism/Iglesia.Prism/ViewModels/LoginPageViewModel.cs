@@ -115,7 +115,7 @@ namespace Iglesia.Prism.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await _navigationService.NavigateAsync($"NavigationPage/{nameof(UsersPage)}");
+            await _navigationService.NavigateAsync($"{nameof(ChurchMasterDetailPage)}/NavigationPage/{nameof(UsersPage)}");
             Password = string.Empty;
 
         }

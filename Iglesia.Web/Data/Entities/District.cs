@@ -27,7 +27,6 @@ namespace Iglesia.Web.Data.Entities
 
 
         [JsonIgnore]
-        [Required]
         public Region Region { get; set; }
 
     }

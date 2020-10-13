@@ -29,5 +29,15 @@ namespace Iglesia.Common.Requests
 
         public int ChurchId { get; set; }
 
+        [Required]
+        public string Phone { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 6)]
+        public string Password { get; set; }
+
+        public byte[] ImageArray { get; set; }
+
+
     }
 }

@@ -35,6 +35,7 @@ namespace Iglesia.Common.Requests
         [Required]
         [StringLength(20, MinimumLength = 6)]
         public string Password { get; set; }
+        public string PasswordConfirm { get; set; }
 
         public byte[] ImageArray { get; set; }
 

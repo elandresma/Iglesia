@@ -183,4 +183,121 @@
   <data name="ShowUsersByChurch" xml:space="preserve">
     <value>Mostrar a los usuarios de mi iglesia</value>
   </data>
+  <data name="Assistances" xml:space="preserve">
+    <value>Asistencias</value>
+  </data>
+  <data name="Meetings" xml:space="preserve">
+    <value>Reuniones</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="DocumentPlaceHolder" xml:space="preserve">
+    <value>Ingrese su número de documento ...</value>
+  </data>
+  <data name="DocumentError" xml:space="preserve">
+    <value>Debe introducir un documento.</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="FirstNamePlaceHolder" xml:space="preserve">
+    <value>Escribir nombre</value>
+  </data>
+  <data name="FirstNameError" xml:space="preserve">
+    <value>Debe introducir un nombre</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="LastNamePlaceHolder" xml:space="preserve">
+    <value>Escribir apellidos</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>Debe introducir un nombre.</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="AddressPlaceHolder" xml:space="preserve">
+    <value>Introduzca su dirección</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>Debe especificar una dirección.</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>Ingresa tu teléfono...</value>
+  </data>
+  <data name="PhonePlaceHolder" xml:space="preserve">
+    <value>Debes poner un número de teléfono</value>
+  </data>
+  <data name="ChurchError" xml:space="preserve">
+    <value>Debe seleccionar una iglesia.</value>
+  </data>
+  <data name="ChurchPlaceHolder" xml:space="preserve">
+    <value>Seleccione su iglesia ...</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>Distrito</value>
+  </data>
+  <data name="DistrictError" xml:space="preserve">
+    <value>Usted debe elegir un distrito</value>
+  </data>
+  <data name="DistrictPlaceHolder" xml:space="preserve">
+    <value>¡Seleccione su distrito...</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Región</value>
+  </data>
+  <data name="RegionError" xml:space="preserve">
+    <value>Debe seleccionar una región</value>
+  </data>
+  <data name="RegionPlaceHolder" xml:space="preserve">
+    <value>Seleccionar región</value>
+  </data>
+  <data name="PasswordConfirm" xml:space="preserve">
+    <value>Confirmar contraseña</value>
+  </data>
+  <data name="PasswordConfirmError1" xml:space="preserve">
+    <value>Debes ingresar una contraseña</value>
+  </data>
+  <data name="PasswordConfirmError2" xml:space="preserve">
+    <value>La contraseña y la confirmación de contraseña no coinciden.</value>
+  </data>
+  <data name="PasswordConfirmPlaceHolder" xml:space="preserve">
+    <value>Confirme la contraseña</value>
+  </data>
+  <data name="Error001" xml:space="preserve">
+    <value>No se ha encontrado.</value>
+  </data>
+  <data name="Error003" xml:space="preserve">
+    <value>Ya hay un usuario registrado con ese correo electrónico</value>
+  </data>
+  <data name="Error004" xml:space="preserve">
+    <value>Iglesia no encontrada</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="RegisterMessage" xml:space="preserve">
+    <value>Su usuario se ha registrado correctamente, se envió un correo electrónico para confirmar la cuenta de usuario.!</value>
+  </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>¿De dónde quieres cargar la foto?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>Desde la cámara</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>De la galería</value>
+  </data>
+  <data name="NoCameraSupported" xml:space="preserve">
+    <value>El dispositivo no admite el acceso a la cámara.!</value>
+  </data>
+  <data name="NoGallerySupported" xml:space="preserve">
+    <value>El dispositivo no admite el acceso a la galería.!</value>
+  </data>
 </root>

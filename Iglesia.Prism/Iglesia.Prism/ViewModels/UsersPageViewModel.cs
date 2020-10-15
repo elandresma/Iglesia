@@ -1,5 +1,4 @@
-﻿using DryIoc;
-using Iglesia.Common.Helpers;
+﻿using Iglesia.Common.Helpers;
 using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
@@ -7,12 +6,9 @@ using Iglesia.Prism.Helpers;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
-using System;
-
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using Xamarin.Essentials;
 
 namespace Iglesia.Prism.ViewModels
@@ -38,7 +34,7 @@ namespace Iglesia.Prism.ViewModels
             LoadUser();
             GetUsersByChurch();
         }
-       
+
 
         public string Search
         {
@@ -113,7 +109,7 @@ namespace Iglesia.Prism.ViewModels
                 return;
             }
 
-           
+
             _myusers = (List<UserResponse>)response.Result;
             ShowUsers();
         }

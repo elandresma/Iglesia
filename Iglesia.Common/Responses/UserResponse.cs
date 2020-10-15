@@ -1,4 +1,5 @@
-﻿using Iglesia.Common.Enum;
+﻿using Iglesia.Common.Entities;
+using Iglesia.Common.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,5 +34,9 @@ namespace Iglesia.Common.Responses
 
         public string FullNameWithDocument => $"{FirstName} {LastName} - {Document}";
 
+        public ICollection<AssistancesResponse> Assistances { get; set; }
+        public Profession Profession { get; set; }
+
+        public ChurchResponse Church { get; set; }
     }
 }

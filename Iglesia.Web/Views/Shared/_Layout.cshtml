@@ -43,6 +43,10 @@
                         <li><a asp-area="" asp-controller="Account" asp-action="Members">Members</a></li>
                         <li><a asp-area="" asp-controller="Account" asp-action="Meetings">Meetings</a></li>
                     }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="MyAssistances">My Assistances</a></li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (User.Identity.IsAuthenticated)

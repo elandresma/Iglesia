@@ -492,6 +492,16 @@ namespace Iglesia.Web.Controllers
             return View(assistances);
            
         }
+        public async Task<IActionResult> MyAssistances()
+        {
+
+            User user = await _userHelper.GetUserAsync(User.Identity.Name);
+            return View(await _context.Assistances
+                .Include(a => a.Meeting)
+                .Where(a => a.User.Email == user.Email)
+                .ToListAsync());
+
+        }
     }
 
 }

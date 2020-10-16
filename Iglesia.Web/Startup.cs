@@ -69,7 +69,7 @@ namespace Iglesia.Web
             });
 
             services.AddScoped<IBlobHelper, BlobHelper>();
-           // services.AddScoped<IConverterHelper, ConverterHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IMailHelper, MailHelper>();
             services.AddTransient<SeedDb>();

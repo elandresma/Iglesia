@@ -2,6 +2,8 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="http://prismlibrary.com"
+                  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                  xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="Iglesia.Prism.Views.ChurchMasterDetailPage">
 
@@ -18,6 +20,20 @@
             </ContentPage.Padding>
 
             <StackLayout Padding="20">
+                <StackLayout Orientation="Horizontal">
+                    <ffimageloading:CachedImage Aspect="AspectFill"
+                                                Source="{Binding User.ImageFullPath}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="100"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600"
+                                                WidthRequest="100">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                </StackLayout>
                 <ListView BackgroundColor="Transparent"
                 	      ItemsSource="{Binding Menus}"
                 	      HasUnevenRows="True"

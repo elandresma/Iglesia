@@ -1,4 +1,5 @@
-﻿using Iglesia.Common.Enum;
+﻿using Iglesia.Common.Entities;
+using Iglesia.Common.Enum;
 using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Web.Data;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -195,6 +197,16 @@ namespace Iglesia.Web.Controllers.API
                 });
             }
 
+            Profession profession = await _context.Professions.FindAsync(request.ProfessionId);
+            if (profession == null)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Error002"
+                });
+            }
+
             Guid imageId = Guid.Empty;
 
             if (request.ImageArray != null)
@@ -213,7 +225,8 @@ namespace Iglesia.Web.Controllers.API
                 UserName = request.Username,
                 ImageId = imageId,
                 UserType = UserType.User,
-                Church = church
+                Church = church,
+                Profession = profession
             };
 
             IdentityResult result = await _userHelper.AddUserAsync(user, request.Password);
@@ -305,6 +318,12 @@ namespace Iglesia.Web.Controllers.API
             return Ok(new Response { IsSuccess = true });
         }
 
+        [HttpGet]
+        [Route("GetProfesionsAPI")]
+        public async Task<IActionResult> GetProfesionsAPI()
+        {
+            return Ok(await _context.Professions.ToListAsync());
+        }
     }
 }
 

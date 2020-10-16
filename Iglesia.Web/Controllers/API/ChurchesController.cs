@@ -43,8 +43,6 @@ namespace Iglesia.Web.Controllers.API
 
             return Ok(await _context.Users
                                 .Include(u => u.Church)
-                                .Include(u => u.Assistances)
-                                .ThenInclude(A => A.Meeting)
                                 .Where(c => c.Church.Id == user.Church.Id && c.UserType.ToString().Equals(UserType.User.ToString()))
                                 .ToListAsync());
 

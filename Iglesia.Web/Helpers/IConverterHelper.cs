@@ -1,4 +1,5 @@
-﻿using Iglesia.Web.Data.Entities;
+﻿using Iglesia.Common.Responses;
+using Iglesia.Web.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,8 @@ namespace Iglesia.Web.Helpers
 {
     public interface IConverterHelper
     {
-   /*    User ToUser(UserViewModel model, Guid imageId, bool isNew);
+        List<AssistancesResponse> ToAssistancesResponseList(List<Assistance> Assistance);
 
-        CategoryViewModel ToCategoryViewModel(Category category);*/
 
     }
 }

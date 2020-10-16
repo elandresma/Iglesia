@@ -1,4 +1,5 @@
-﻿using Iglesia.Common.Helpers;
+﻿using Iglesia.Common.Entities;
+using Iglesia.Common.Helpers;
 using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
@@ -31,6 +32,8 @@ namespace Iglesia.Prism.ViewModels
         private ObservableCollection<DistrictResponse> _districts;
         private RegionResponse _region;
         private ObservableCollection<RegionResponse> _regions;
+        private Profession _profession;
+        private ObservableCollection<Profession> _professions;
         private bool _isRunning;
         private bool _isEnabled;
         private DelegateCommand _registerCommand;
@@ -55,6 +58,7 @@ namespace Iglesia.Prism.ViewModels
             IsEnabled = true;
             User = new UserRequest();
             LoadRegionsAsync();
+            LoadProfessionsAsync();
 
         }
         public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
@@ -87,6 +91,19 @@ namespace Iglesia.Prism.ViewModels
             }
         }
 
+        public Profession Profession
+        {
+            get => _profession;
+            set
+            {
+                SetProperty(ref _profession, value);
+            }
+        }
+        public ObservableCollection<Profession> Professions
+        {
+            get => _professions;
+            set => SetProperty(ref _professions, value);
+        }
 
         public ObservableCollection<RegionResponse> Regions
         {
@@ -191,6 +208,7 @@ namespace Iglesia.Prism.ViewModels
 
             string url = App.Current.Resources["UrlAPI"].ToString();
             User.ChurchId = Church.Id;
+            User.ProfessionId = Profession.Id;
 
             Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account/Register", User);
             IsRunning = false;
@@ -266,6 +284,11 @@ namespace Iglesia.Prism.ViewModels
             if (District == null)
             {
                 await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.DistrictError, Languages.Accept);
+                return false;
+            }
+            if (Profession == null)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ProfessionError, Languages.Accept);
                 return false;
             }
 
@@ -350,6 +373,33 @@ namespace Iglesia.Prism.ViewModels
             }
         }
 
+        private async void LoadProfessionsAsync()
+        {
+            IsRunning = true;
+            IsEnabled = false;
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                IsRunning = false;
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
+                return;
+            }
+
+            string url = App.Current.Resources["UrlAPI"].ToString();
+            Response response = await _apiService.GetListAsync<Profession>(url, "/api", "/Account/GetProfesionsAPI");
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
+                return;
+            }
+
+            List<Profession> list = (List<Profession>)response.Result;
+            Professions = new ObservableCollection<Profession>(list.OrderBy(c => c.Name));
+        }
     }
 
 

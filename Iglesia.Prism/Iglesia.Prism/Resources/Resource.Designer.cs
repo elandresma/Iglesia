@@ -124,6 +124,24 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        internal static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User updated..
+        /// </summary>
+        internal static string ChangeUserMessage {
+            get {
+                return ResourceManager.GetString("ChangeUserMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Church.
         /// </summary>
         internal static string Church {
@@ -543,6 +561,51 @@ namespace Iglesia.Prism.Resources {
         internal static string PictureSource {
             get {
                 return ResourceManager.GetString("PictureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profession.
+        /// </summary>
+        internal static string Profession {
+            get {
+                return ResourceManager.GetString("Profession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must select a profession..
+        /// </summary>
+        internal static string ProfessionError {
+            get {
+                return ResourceManager.GetString("ProfessionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select your church....
+        /// </summary>
+        internal static string ProfessionPlaceHolder {
+            get {
+                return ResourceManager.GetString("ProfessionPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recover Password.
+        /// </summary>
+        internal static string RecoverPassword {
+            get {
+                return ResourceManager.GetString("RecoverPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An email was sent to change your password..
+        /// </summary>
+        internal static string RecoverPasswordMessage {
+            get {
+                return ResourceManager.GetString("RecoverPasswordMessage", resourceCulture);
             }
         }
         

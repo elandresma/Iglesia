@@ -20,7 +20,7 @@ namespace Iglesia.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
         public DateTime DateLocal => Date.ToLocalTime();
 
-        [JsonIgnore]
+        
         public ICollection<Assistance> Assistances { get; set; }
 
         [Display(Name = "# Assistances")]

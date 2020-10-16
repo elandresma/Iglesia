@@ -133,6 +133,19 @@ namespace Iglesia.Prism.Helpers
 
         public static string NoGallerySupported => Resource.NoGallerySupported;
 
+        public static string RecoverPassword => Resource.RecoverPassword;
+
+        public static string RecoverPasswordMessage => Resource.RecoverPasswordMessage;
+
+        public static string ChangePassword => Resource.ChangePassword;
+
+        public static string ChangeUserMessage => Resource.ChangeUserMessage;
+
+        public static string ProfessionError => Resource.ProfessionError;
+        public static string ProfessionPlaceHolder => Resource.ProfessionPlaceHolder;
+
+        public static string Profession => Resource.Profession;
+
 
     }
 

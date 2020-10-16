@@ -1,7 +1,10 @@
-﻿using Iglesia.Common.Models;
+﻿using Iglesia.Common.Helpers;
+using Iglesia.Common.Models;
+using Iglesia.Common.Responses;
 using Iglesia.Prism.Helpers;
 using Iglesia.Prism.ItemViewModels;
 using Iglesia.Prism.Views;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -15,11 +18,35 @@ namespace Iglesia.Prism.ViewModels
     public class ChurchMasterDetailPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private UserResponse _user;
+        private static ChurchMasterDetailPageViewModel _instance;
+
 
         public ChurchMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            _instance = this;
             _navigationService = navigationService;
             LoadMenus();
+            LoadUser();
+        }
+
+        public static ChurchMasterDetailPageViewModel GetInstance()
+        {
+            return _instance;
+        }
+
+        public UserResponse User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+        public void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+                User = token.User;
+            }
         }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 

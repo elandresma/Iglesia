@@ -59,7 +59,7 @@
                                Text="{Binding User.LastName}" />
                     </inputLayout:SfTextInputLayout>
 
-                    <inputLayout:SfTextInputLayout Hint="{i18n:Translate Region}" 
+                        <inputLayout:SfTextInputLayout Hint="{i18n:Translate Region}" 
                                                    ContainerType="Outlined">
                         <Picker ItemDisplayBinding="{Binding Name}"
                                 ItemsSource="{Binding Regions}"
@@ -81,6 +81,14 @@
                                 ItemsSource="{Binding Churches}"
                                 SelectedItem="{Binding Church}"
                                 Title="{i18n:Translate ChurchPlaceHolder}"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint="{i18n:Translate Profession}" 
+                                                   ContainerType="Outlined">
+                        <Picker ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Professions}"
+                                SelectedItem="{Binding Profession}"
+                                Title="{i18n:Translate ProfessionPlaceHolder}"/>
                     </inputLayout:SfTextInputLayout>
 
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Address}" 

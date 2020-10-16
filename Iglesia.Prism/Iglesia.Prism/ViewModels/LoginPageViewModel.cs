@@ -120,10 +120,12 @@ namespace Iglesia.Prism.ViewModels
 
         }
 
-        private void ForgotPasswordAsync()
+
+        private async void ForgotPasswordAsync()
         {
-            //TODO: Pending
+            await _navigationService.NavigateAsync(nameof(RecoverPasswordPage));
         }
+
 
         private async void RegisterAsync()
         {

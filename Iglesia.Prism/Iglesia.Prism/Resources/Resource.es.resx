@@ -300,4 +300,25 @@
   <data name="NoGallerySupported" xml:space="preserve">
     <value>El dispositivo no admite el acceso a la galería.!</value>
   </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>Se envió un correo electrónico para cambiar su contraseña.!</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="ChangeUserMessage" xml:space="preserve">
+    <value>Usuario actualizado</value>
+  </data>
+  <data name="Profession" xml:space="preserve">
+    <value>Profesión</value>
+  </data>
+  <data name="ProfessionError" xml:space="preserve">
+    <value>Usted debe seleccionar una profesión.!</value>
+  </data>
+  <data name="ProfessionPlaceHolder" xml:space="preserve">
+    <value>Seleccione una profesión</value>
+  </data>
 </root>

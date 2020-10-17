@@ -321,4 +321,43 @@
   <data name="ProfessionPlaceHolder" xml:space="preserve">
     <value>Sélectionnez une profession</value>
   </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirmer le nouveau mot de passe</value>
+  </data>
+  <data name="ConfirmNewPasswordError1" xml:space="preserve">
+    <value>Vous devez entrer une confirmation pour le nouveau mot de passe.!</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>La confirmation de mot de passe ne correspond pas</value>
+  </data>
+  <data name="ConfirmNewPasswordPlaceHolder" xml:space="preserve">
+    <value>Entrez la confirmation du nouveau mot de passe ...!</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Mot de passe actuel</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Vous devez saisir votre nouveau mot de passe.</value>
+  </data>
+  <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
+    <value>Saisissez votre mot de passe actuel.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>&amp;Nouveau mot de passe :</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Vous devez saisir un nouveau mot de passe.</value>
+  </data>
+  <data name="NewPasswordPlaceHolder" xml:space="preserve">
+    <value>Entrer le nouveau mot de passe</value>
+  </data>
+  <data name="Error005" xml:space="preserve">
+    <value>Le mot de passe actuel est incorrect</value>
+  </data>
+  <data name="ChangePassworrdMessage" xml:space="preserve">
+    <value>Le mot de passe a été modifié.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
 </root>

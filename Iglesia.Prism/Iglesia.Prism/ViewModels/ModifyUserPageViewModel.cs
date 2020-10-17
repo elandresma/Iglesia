@@ -4,6 +4,7 @@ using Iglesia.Common.Requests;
 using Iglesia.Common.Responses;
 using Iglesia.Common.Services;
 using Iglesia.Prism.Helpers;
+using Iglesia.Prism.Views;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -59,8 +60,8 @@ namespace Iglesia.Prism.ViewModels
             LoadRegionsAsync();
         }
 
-        public DelegateCommand ChangeImageCommand => _changeImageCommand ??
-            (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+        public DelegateCommand ChangeImageCommand => _changeImageCommand ?? (_changeImageCommand = new DelegateCommand(ChangeImageAsync));
+
 
         public DelegateCommand SaveCommand => _saveCommand ??
             (_saveCommand = new DelegateCommand(SaveAsync));
@@ -297,7 +298,7 @@ namespace Iglesia.Prism.ViewModels
 
             TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.ModifyUserAsync(url, "/api", "/Account", request, token.Token);
+            Response response = await _apiService.ModifyUserAsync(url, "/api", "/Account/PutUser", request, token.Token);
             IsRunning = false;
             IsEnabled = true;
 
@@ -414,6 +415,8 @@ namespace Iglesia.Prism.ViewModels
         }
         private async void ChangePasswordAsync()
         {
+            await _navigationService.NavigateAsync(nameof(ChangePasswordPage));
+
         }
     }
 

@@ -321,4 +321,43 @@
   <data name="ProfessionPlaceHolder" xml:space="preserve">
     <value>Seleccione una profesión</value>
   </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirmar nueva contraseña</value>
+  </data>
+  <data name="ConfirmNewPasswordError1" xml:space="preserve">
+    <value>Debe ingresar una confirmación para la nueva contraseña.!</value>
+  </data>
+  <data name="ConfirmNewPasswordError2" xml:space="preserve">
+    <value>La confirmación de la contraseña no coincide</value>
+  </data>
+  <data name="ConfirmNewPasswordPlaceHolder" xml:space="preserve">
+    <value>Ingrese la confirmación de la nueva contraseña ...!</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="CurrentPasswordError" xml:space="preserve">
+    <value>Debe introducir su nueva contraseña.</value>
+  </data>
+  <data name="CurrentPasswordPlaceHolder" xml:space="preserve">
+    <value>Escriba la contraseña actual.</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Contraseña nueva:</value>
+  </data>
+  <data name="NewPasswordError" xml:space="preserve">
+    <value>Debe introducir la nueva contraseña.</value>
+  </data>
+  <data name="NewPasswordPlaceHolder" xml:space="preserve">
+    <value>Escribe la nueva contraseña</value>
+  </data>
+  <data name="Error005" xml:space="preserve">
+    <value>La contraseña actual es incorrecta</value>
+  </data>
+  <data name="ChangePassworrdMessage" xml:space="preserve">
+    <value>La contraseña se cambió correctamente.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
 </root>

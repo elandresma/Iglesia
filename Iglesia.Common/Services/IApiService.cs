@@ -16,6 +16,12 @@ namespace Iglesia.Common.Services
         Task<Response> RecoverPasswordAsync(string urlBase, string servicePrefix, string controller, EmailRequest emailRequest);
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string token);
         Task<Response> ModifyUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest, string token);
+        Task<Response> GetMeetings<T>(string urlBase, string servicePrefix, string controller, MeetingRequest meeting);
+        Task<Response> CreateMeetingAsync<T>(string urlBase, string servicePrefix, string controller, MeetingRequest meeting);
+        Task<Response> UpdateAssistancesAsync<T>(string urlBase, string servicePrefix, string controller, AssistancesRequest assistances);
+        Task<Response> GetMyassistancesAsync<T>(string urlBase, string servicePrefix, string controller, EmailRequest email);
+        
+
 
     }
 }

@@ -3,14 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Iglesia.Prism.Views.AddUsersPage"
+            xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
            	 xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
-             x:Class="Iglesia.Prism.Views.ModifyUserPage"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
 
@@ -34,7 +32,14 @@
                             <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
-                    
+
+                    <inputLayout:SfTextInputLayout Hint="{i18n:Translate Email}" 
+                                                   ContainerType="Outlined">
+                        <Entry Placeholder="{i18n:Translate EmailPlaceHolder}"
+                               Keyboard="Email"
+                               Text="{Binding User.Username}" />
+                    </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Document}" 
                                                    ContainerType="Outlined">
                         <Entry Placeholder="{i18n:Translate DocumentPlaceHolder}" 
@@ -46,11 +51,13 @@
                         <Entry Placeholder="{i18n:Translate FirstNamePlaceHolder}" 
                                Text="{Binding User.FirstName}" />
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate LastName}" 
                                                    ContainerType="Outlined">
                         <Entry Placeholder="{i18n:Translate LastName}" 
                                Text="{Binding User.LastName}" />
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Region}" 
                                                    ContainerType="Outlined">
                         <Picker ItemDisplayBinding="{Binding Name}"
@@ -58,6 +65,7 @@
                                 SelectedItem="{Binding Region}"
                                 Title="{i18n:Translate RegionPlaceHolder}"/>
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate District}" 
                                                    ContainerType="Outlined">
                         <Picker ItemDisplayBinding="{Binding Name}"
@@ -65,6 +73,7 @@
                                 SelectedItem="{Binding District}"
                                 Title="{i18n:Translate DistrictPlaceHolder}"/>
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Church}" 
                                                    ContainerType="Outlined">
                         <Picker ItemDisplayBinding="{Binding Name}"
@@ -80,29 +89,42 @@
                                 SelectedItem="{Binding Profession}"
                                 Title="{i18n:Translate ProfessionPlaceHolder}"/>
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Address}" 
                                                    ContainerType="Outlined">
                         <Entry Placeholder="{i18n:Translate AddressPlaceHolder}" 
                                Text="{Binding User.Address}" />
                     </inputLayout:SfTextInputLayout>
+
                     <inputLayout:SfTextInputLayout Hint="{i18n:Translate Phone} " 
                                                    ContainerType="Outlined">
                         <Entry Placeholder="{i18n:Translate PhonePlaceHolder}" 
                                Keyboard="Telephone"
-                               Text="{Binding User.PhoneNumber}" />
+                               Text="{Binding User.Phone}" />
                     </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint="{i18n:Translate Password}" 
+                                                   EnablePasswordVisibilityToggle="true"
+                                                   ContainerType="Outlined">
+                        <Entry Placeholder="{i18n:Translate PasswordPlaceHolder}" 
+                               IsPassword="True"
+                               Text="{Binding User.Password}" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint="{i18n:Translate PasswordConfirm}" 
+                                                   EnablePasswordVisibilityToggle="true"
+                                                   ContainerType="Outlined">
+                        <Entry Placeholder="{i18n:Translate PasswordConfirmPlaceHolder}" 
+                               IsPassword="True"
+                               Text="{Binding User.PasswordConfirm}" />
+                    </inputLayout:SfTextInputLayout>
+
                 </StackLayout>
             </ScrollView>
-            <StackLayout Orientation="Horizontal"
-                         VerticalOptions="EndAndExpand">
-                <Button Command="{Binding SaveCommand}"
-                        IsEnabled="{Binding IsEnabled}"
-                        Text="{i18n:Translate Save}"/>
-                <Button Command="{Binding ChangePasswordCommand}"
-                        IsEnabled="{Binding IsEnabled}"
-                        Style="{StaticResource SecondaryButton}"
-                        Text="{i18n:Translate ChangePassword}"/>
-            </StackLayout>
+            <Button Command="{Binding RegisterCommand}"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="{i18n:Translate Register}"
+                    VerticalOptions="EndAndExpand"/>
         </StackLayout>
         <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
@@ -116,5 +138,4 @@
                 	                   ViewBoxWidth="80"
                 	                   ViewBoxHeight="80" />
     </AbsoluteLayout>
-
 </ContentPage>

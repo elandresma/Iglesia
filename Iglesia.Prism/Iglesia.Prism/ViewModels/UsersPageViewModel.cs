@@ -112,6 +112,7 @@ namespace Iglesia.Prism.ViewModels
 
             _myusers = (List<UserResponse>)response.Result;
             ShowUsers();
+            Settings.Church = JsonConvert.SerializeObject(_myusers.FirstOrDefault().Church.Id);
         }
     }
 

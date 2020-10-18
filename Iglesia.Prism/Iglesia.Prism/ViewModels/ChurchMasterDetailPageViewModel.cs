@@ -1,4 +1,5 @@
-﻿using Iglesia.Common.Helpers;
+﻿using Iglesia.Common.Enum;
+using Iglesia.Common.Helpers;
 using Iglesia.Common.Models;
 using Iglesia.Common.Responses;
 using Iglesia.Prism.Helpers;
@@ -26,8 +27,8 @@ namespace Iglesia.Prism.ViewModels
         {
             _instance = this;
             _navigationService = navigationService;
-            LoadMenus();
             LoadUser();
+            LoadMenus();
         }
 
         public static ChurchMasterDetailPageViewModel GetInstance()
@@ -67,6 +68,12 @@ namespace Iglesia.Prism.ViewModels
                 PageName = $"{nameof(UsersPage)}",
                 Title = Languages.ShowUsersByChurch,
                  IsLoginRequired = true
+            },new Menu
+            {
+                Icon = "addUser",
+                PageName = $"{nameof(AddUsersPage)}",
+                Title = Languages.AddUsers,
+                IsLoginRequired = true
             },
             new Menu
             {
@@ -83,14 +90,60 @@ namespace Iglesia.Prism.ViewModels
             }
         };
 
-            Menus = new ObservableCollection<MenuItemViewModel>(
-                menus.Select(m => new MenuItemViewModel(_navigationService)
+            List<Menu> menuUser = new List<Menu>
+        {
+            new Menu
+            {
+                Icon = "assistance",
+                PageName = $"{nameof(MyAssistancesPage)}",
+                Title = Languages.Assistances,
+                IsLoginRequired = true
+            },
+            new Menu
+            {
+                Icon = "ic_UsersByChurch",
+                PageName = $"{nameof(UsersPage)}",
+                Title = Languages.ShowUsersByChurch,
+                 IsLoginRequired = true
+            },
+            new Menu
+            {
+                Icon = "ic_User",
+                PageName = $"{nameof(ModifyUserPage)}",
+                Title = Languages.ModifyUser,
+                IsLoginRequired = true
+            },
+            new Menu
+            {
+                Icon = "ic_exit",
+                PageName = $"{nameof(LoginPage)}",
+                Title = Languages.Logout
+            }
+        };
+
+            if (User.UserType.ToString().Equals(UserType.User.ToString()))
+            {
+                Menus = new ObservableCollection<MenuItemViewModel>(
+                menuUser.Select(m => new MenuItemViewModel(_navigationService)
                 {
-                    Icon = m.Icon,
-                    PageName = m.PageName,
-                    Title = m.Title,
-                    IsLoginRequired = m.IsLoginRequired
+                   Icon = m.Icon,
+                   PageName = m.PageName,
+                   Title = m.Title,
+                   IsLoginRequired = m.IsLoginRequired
                 }).ToList());
+            }
+            else 
+            {
+                Menus = new ObservableCollection<MenuItemViewModel>(
+               menus.Select(m => new MenuItemViewModel(_navigationService)
+               {
+                   Icon = m.Icon,
+                   PageName = m.PageName,
+                   Title = m.Title,
+                   IsLoginRequired = m.IsLoginRequired
+               }).ToList());
+            }
+           
         }
     }
 

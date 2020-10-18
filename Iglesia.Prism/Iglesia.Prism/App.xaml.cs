@@ -21,7 +21,7 @@ namespace Iglesia.Prism
 
         protected override async void OnInitialized()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MzI4NzM0QDMxMzgyZTMyMmUzMFVQbHlyS0UreFM4cjdhdW9sUXFLU1B6T0Yvb0Zpd3dqWXVlb3FhOU5WTE09");
+            SyncfusionLicenseProvider.RegisterLicense("MzM3MDk4QDMxMzgyZTMzMmUzME1VbjB6VkFlcjN1cnJvL2Q3VExVc0JnY21XZm96QTIxbGlsb001SWlmV0U9");
             InitializeComponent();
 
             await NavigationService.NavigateAsync($"NavigationPage/{nameof(LoginPage)}");
@@ -48,6 +48,9 @@ namespace Iglesia.Prism
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<RecoverPasswordPage, RecoverPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<ChangePasswordPage, ChangePasswordPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddMeetingPage, AddMeetingPageViewModel>();
+            containerRegistry.RegisterForNavigation<MyAssistancesPage, MyAssistancesPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddUsersPage, AddUsersPageViewModel>();
         }
     }
 }

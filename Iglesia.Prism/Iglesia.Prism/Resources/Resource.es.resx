@@ -360,4 +360,22 @@
   <data name="Save" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="AddMeeting" xml:space="preserve">
+    <value>Agregar reunión</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>¡Seleccione una fecha para la reunión!</value>
+  </data>
+  <data name="AddMeetingMessage" xml:space="preserve">
+    <value>¡La reunión se creó con éxito!</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Actualizar</value>
+  </data>
+  <data name="UpdateAssistancesMessage" xml:space="preserve">
+    <value>¡Las asistencias se actualizaron con éxito!</value>
+  </data>
+  <data name="AddUsers" xml:space="preserve">
+    <value>Agregar nuevo usuario</value>
+  </data>
 </root>

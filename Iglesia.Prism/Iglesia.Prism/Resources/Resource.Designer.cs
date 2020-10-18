@@ -70,6 +70,24 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Meeting.
+        /// </summary>
+        internal static string AddMeeting {
+            get {
+                return ResourceManager.GetString("AddMeeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Meeting was created successfully.
+        /// </summary>
+        internal static string AddMeetingMessage {
+            get {
+                return ResourceManager.GetString("AddMeetingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string Address {
@@ -93,6 +111,15 @@ namespace Iglesia.Prism.Resources {
         internal static string AddressPlaceHolder {
             get {
                 return ResourceManager.GetString("AddressPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add new user.
+        /// </summary>
+        internal static string AddUsers {
+            get {
+                return ResourceManager.GetString("AddUsers", resourceCulture);
             }
         }
         
@@ -772,11 +799,38 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a date to Meeting.
+        /// </summary>
+        internal static string SelectDate {
+            get {
+                return ResourceManager.GetString("SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show users of my church.
         /// </summary>
         internal static string ShowUsersByChurch {
             get {
                 return ResourceManager.GetString("ShowUsersByChurch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The assistants was updated successfully.
+        /// </summary>
+        internal static string UpdateAssistancesMessage {
+            get {
+                return ResourceManager.GetString("UpdateAssistancesMessage", resourceCulture);
             }
         }
         

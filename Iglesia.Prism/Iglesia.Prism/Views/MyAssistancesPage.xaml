@@ -3,18 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
+             x:Class="Iglesia.Prism.Views.MyAssistancesPage"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             ios:Page.UseSafeArea="true"
-            x:Class="Iglesia.Prism.Views.ShowMeetingsPage"
-    BackgroundColor="{StaticResource ColorBackground}"
+             BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
+
     <AbsoluteLayout>
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
-            <CollectionView ItemsSource="{Binding Meetings}">
+            <CollectionView ItemsSource="{Binding Assistances}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      VerticalItemSpacing="2"/>
@@ -22,33 +20,26 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid  Padding="15">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DetailMeetingCommand}"/>
-                            </Grid.GestureRecognizers>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="0"
+                            <StackLayout 
                                      VerticalOptions="Center">
-                                <Label Text="{Binding Date,StringFormat='{0:MMMM d/yyyy}'}"
+                                <Label Grid.Column="0"
+                                       Text="{Binding Meeting.Date,StringFormat='{0:MMMM d/yyyy}'}"
                                    FontAttributes="Bold"
                                    FontSize="Medium"
                                    LineBreakMode="TailTruncation" />
                             </StackLayout>
-                            <Image Grid.Column="2" 
-                               HorizontalOptions="End"
-                               Source="ic_more_vert"/>
+                            <CheckBox Grid.Column="2"
+                              HorizontalOptions="End"
+                              IsEnabled="False"
+                              IsChecked="{Binding IsPresent}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button VerticalOptions="EndAndExpand"
-                HorizontalOptions="Center"
-                    Command="{Binding AddMeetingCommand}" 
-                        IsEnabled="{Binding IsEnabled}"
-                        Text="{i18n:Translate AddMeeting}"
-                        Style="{StaticResource DangerButton}"/>
         </StackLayout>
         <busyindicator:SfBusyIndicator AnimationType="Gear" 
                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"

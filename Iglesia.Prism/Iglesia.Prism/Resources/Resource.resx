@@ -357,7 +357,25 @@
   <data name="ChangePassworrdMessage" xml:space="preserve">
     <value>The password was changed successfully.</value>
   </data>
+  <data name="AddMeeting" xml:space="preserve">
+    <value>Add Meeting</value>
+  </data>
+  <data name="AddMeetingMessage" xml:space="preserve">
+    <value>The Meeting was created successfully</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Select a date to Meeting</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateAssistancesMessage" xml:space="preserve">
+    <value>The assistants was updated successfully</value>
+  </data>
+  <data name="AddUsers" xml:space="preserve">
+    <value>Add new user</value>
   </data>
 </root>

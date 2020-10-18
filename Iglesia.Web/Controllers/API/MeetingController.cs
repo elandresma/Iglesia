@@ -26,9 +26,18 @@ namespace Iglesia.Web.Controllers.API
             _converterHelper = converterHelper;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult GetMeeting([FromBody] MeetingRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request",
+                    Result = ModelState
+                });
+            }
             return Ok(_context.Meetings
                 .Include(m => m.Church)
                 .Include(m => m.Assistances)
@@ -83,7 +92,7 @@ namespace Iglesia.Web.Controllers.API
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetAssistances")]
         public async Task<IActionResult> GetAssistancesAsync([FromBody] EmailRequest request)
         {
@@ -95,6 +104,34 @@ namespace Iglesia.Web.Controllers.API
            
             return Ok(_converterHelper.ToAssistancesResponseList(resultado));
 
+        }
+        [HttpPut]
+        [Route("UpdateAssistances")]
+        public async Task<IActionResult> UpdateAssistances([FromBody] AssistancesRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request",
+                    Result = ModelState
+                });
+            }
+
+            foreach (var item in request.AssistancesList)
+            {
+                Assistance assitance = new Assistance
+                {
+                    Id = item.Id,
+                    IsPresent = item.IsPresent
+                };
+
+                _context.Update(assitance);
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok(new Response { IsSuccess = true });
         }
     }
 }

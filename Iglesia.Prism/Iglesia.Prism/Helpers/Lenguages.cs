@@ -171,6 +171,12 @@ namespace Iglesia.Prism.Helpers
 
         public static string ChangePassworrdMessage => Resource.ChangePassworrdMessage;
 
+        public static string AddMeeting => Resource.AddMeeting;
+        public static string AddMeetingMessage => Resource.AddMeetingMessage;
+        public static string SelectDate => Resource.SelectDate;
+        public static string Update => Resource.Update;
+        public static string UpdateAssistancesMessage => Resource.UpdateAssistancesMessage;
+        public static string AddUsers => Resource.AddUsers;
 
     }
 

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Iglesia.Prism.Views.AddMeetingPage"
+             xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
+             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"  
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             BackgroundColor="{StaticResource ColorBackground}"
+             Title="{Binding Title}">
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All" 
+                     Padding="5">
+
+            <controls:Calendar Padding="10,0,10,0"   
+                   SelectedBorderWidth="4"   
+                   DisabledBorderColor="Black"  
+                   ShowNumberOfWeek="false"  
+                   StartDay="Monday"  
+                   TitleLabelTextColor="Purple"  
+                   TitleLeftArrowTextColor="Blue"  
+                   SelectedDate="{Binding Date}"  
+                   DateCommand="{Binding DateChosen}"/>
+            
+            <Button VerticalOptions="EndAndExpand"
+                HorizontalOptions="Center"
+                    Command="{Binding AddMeetingCommand}" 
+                        IsEnabled="{Binding IsEnabled}"
+                        Text="{i18n:Translate Ok}"
+                        Style="{StaticResource DangerButton}"/>
+        </StackLayout>
+        <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsBusy="{Binding IsRunning}"
+                	                   Title="{i18n:Translate Loading}"
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+    </AbsoluteLayout>
+</ContentPage>

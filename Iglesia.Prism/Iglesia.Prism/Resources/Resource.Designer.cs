@@ -466,7 +466,7 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ¿Is present?.
+        ///   Looks up a localized string similar to Is present?.
         /// </summary>
         internal static string IsPresent {
             get {

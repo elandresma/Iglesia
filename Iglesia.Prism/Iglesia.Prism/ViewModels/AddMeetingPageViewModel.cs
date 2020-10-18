@@ -28,7 +28,7 @@ namespace Iglesia.Prism.ViewModels
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            Title = Languages.ModifyUser;
+            Title = Languages.AddMeeting;
         }
 
         public DelegateCommand AddMeetingCommand => _addmeetingcommand ??

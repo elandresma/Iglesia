@@ -177,7 +177,10 @@ namespace Iglesia.Prism.Helpers
         public static string Update => Resource.Update;
         public static string UpdateAssistancesMessage => Resource.UpdateAssistancesMessage;
         public static string AddUsers => Resource.AddUsers;
-
+        public static string IsPresent => Resource.IsPresent;
+        public static string DateMeeting => Resource.DateMeeting;
+        public static string SearchAUser => Resource.SearchAUser;
+        public static string Members => Resource.Members;
     }
 
 

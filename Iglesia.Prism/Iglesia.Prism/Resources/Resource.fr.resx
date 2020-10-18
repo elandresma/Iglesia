@@ -378,4 +378,16 @@
   <data name="AddUsers" xml:space="preserve">
     <value>Ajouter un nouvel utilisateur</value>
   </data>
+  <data name="DateMeeting" xml:space="preserve">
+    <value>Date de la réunion :</value>
+  </data>
+  <data name="IsPresent" xml:space="preserve">
+    <value>Est présent</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Membres</value>
+  </data>
+  <data name="SearchAUser" xml:space="preserve">
+    <value>Rechercher un utilisateur</value>
+  </data>
 </root>

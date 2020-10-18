@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Iglesia.Prism.Views.MyAssistancesPage"
+                          xmlns:i18n="clr-namespace:Iglesia.Prism.Helpers"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
@@ -12,6 +13,17 @@
         <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All" 
                      Padding="5">
+            <Frame CornerRadius="7"  
+       OutlineColor="Red" 
+       Padding="0">
+                <StackLayout Padding="5" Orientation="Horizontal">
+                    <Label Text="{i18n:Translate DateMeeting}" FontAttributes="Bold" FontSize="Medium"
+                VerticalTextAlignment="Center"/>
+
+                    <Label Text="{i18n:Translate IsPresent}" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
+
+                </StackLayout>
+            </Frame>
             <CollectionView ItemsSource="{Binding Assistances}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"

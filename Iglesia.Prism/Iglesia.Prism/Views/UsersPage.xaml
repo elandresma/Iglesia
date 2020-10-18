@@ -18,7 +18,7 @@
             <Label FontAttributes="Bold"
         FontSize="Large"
         Text="{Binding User.FullName}"/>
-            <SearchBar Placeholder="Search a User..."
+            <SearchBar Placeholder="{i18n:Translate SearchAUser}"
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Search}"/>
 

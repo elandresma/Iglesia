@@ -277,6 +277,15 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of meeting.
+        /// </summary>
+        internal static string DateMeeting {
+            get {
+                return ResourceManager.GetString("DateMeeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to District.
         /// </summary>
         internal static string District {
@@ -457,6 +466,15 @@ namespace Iglesia.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ¿Is present?.
+        /// </summary>
+        internal static string IsPresent {
+            get {
+                return ResourceManager.GetString("IsPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         internal static string LastName {
@@ -525,6 +543,15 @@ namespace Iglesia.Prism.Resources {
         internal static string Meetings {
             get {
                 return ResourceManager.GetString("Meetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Members.
+        /// </summary>
+        internal static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
             }
         }
         
@@ -795,6 +822,15 @@ namespace Iglesia.Prism.Resources {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search a user....
+        /// </summary>
+        internal static string SearchAUser {
+            get {
+                return ResourceManager.GetString("SearchAUser", resourceCulture);
             }
         }
         
